@@ -2,15 +2,12 @@ import { FruitDescription } from "../value-objects/fruit-description";
 import { FruitLimitExceededError, NegativeFruitLimitError } from "../errors";
 
 export class Fruit {
-    public description: FruitDescription;
     public currentAmount: number;
     constructor(
         public name: string,
-        description: string,
+        public description: FruitDescription,
         public limitOfFruitToBeStored: number
     ){
-        this.description = FruitDescription.create(description);
-
         if (this.limitOfFruitToBeStored < 0) {
             throw new NegativeFruitLimitError('Fruit limit cannot be negative.');
         }
@@ -29,9 +26,9 @@ export class Fruit {
         this.currentAmount += amount;
     }   
 
-    public update(name: string, description: string, limitOfFruitToBeStored: number): void {
+    public update(name: string, description: FruitDescription, limitOfFruitToBeStored: number): void {
         this.name = name;
-        this.description = FruitDescription.create(description);
+        this.description = description;
         this.limitOfFruitToBeStored = limitOfFruitToBeStored;
     }
 }
