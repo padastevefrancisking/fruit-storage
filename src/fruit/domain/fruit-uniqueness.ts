@@ -1,0 +1,16 @@
+import { Inject, Injectable } from "@nestjs/common";
+import { FruitName } from "./value-objects/fruit-name.vo";
+import { FRUIT_REPOSITORY } from "../repos/fruit.repository";
+import type { IFruitRepository } from "../repos/fruit.repository";
+
+@Injectable()
+export class FruitUniquenessService{
+    constructor(
+        @Inject(FRUIT_REPOSITORY) private readonly fruitRepository: IFruitRepository
+    ) {}
+
+    public async isUnique(name: FruitName): Promise<boolean> {
+        const alreadyExists = this.fruitRepository.exists(name.value);
+        return !alreadyExists;
+    }
+}
