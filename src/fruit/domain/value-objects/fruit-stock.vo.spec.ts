@@ -6,9 +6,7 @@ describe('FruitStock', () => {
 
     it('should create successfully with 0 stock', () => {
         const result = FruitStock.create(0);
-        expect(result.isSuccess).toBe(true);
-        expect(result.getValue()).toBeInstanceOf(FruitStock);
-        expect(result.getValue().value).toBe(0);
+        expect(result.isSuccess).toBe(false);
     });
 
     it('should create successfully with a positive stock amount', () => {

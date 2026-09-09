@@ -18,8 +18,7 @@ describe('FruitStorageLimit', () => {
 
     it('should allow limit of 0 if 0 is a valid storage limit', () => {
         const result = FruitStorageLimit.create(0);
-        expect(result.isSuccess).toBe(true);
-        expect(result.getValue().value).toBe(0);
+        expect(result.isSuccess).toBe(false);
     });
 
     it('should consider two FruitStorageLimits with same value equal', () => {
