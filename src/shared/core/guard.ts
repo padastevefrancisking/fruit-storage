@@ -17,15 +17,21 @@ export class Guard {
         return Result.ok<GuardResponse>();
     }
 
-    public static isGreaterThan(minValue: number, actualValue: number): Result<GuardResponse> {
-        return actualValue > minValue
-            ? Result.ok<GuardResponse>()
-            : Result.fail<GuardResponse>(`Value is not greater than ${minValue}`);
+    public static againstGreaterThan(maxValue: number, actualValue: number): Result<GuardResponse> {
+        return actualValue > maxValue
+            ? Result.fail<GuardResponse>(`Value is greater than ${maxValue}`)
+            : Result.ok<GuardResponse>();
     }
 
     public static isPositiveNumber(argument: number, argumentName: string): Result<GuardResponse> {
         return (!Number.isInteger(argument) || argument <= 0)
             ? Result.fail<GuardResponse>(`${argumentName} is not a positive integer.`)
+            : Result.ok<GuardResponse>();
+    }
+
+    public static againstNegativeNumber(argument: number, argumentName: string): Result<GuardResponse> {
+        return argument > 0
+            ? Result.fail<GuardResponse>(`${argumentName} is negative.`)
             : Result.ok<GuardResponse>();
     }
 
@@ -41,15 +47,21 @@ export class Guard {
             : Result.ok<GuardResponse>();
     }
 
+    public static againstNullOrUndefinedBulk(args: GuardArgumentCollection): Result<GuardResponse> {
+        for (const arg of args)
+        {
+            const nullGuardResult = Guard.againstNullOrUndefined(arg.argument, arg.argumentName);
+            if (nullGuardResult.isFailure) { 
+                return Result.fail<GuardResponse>(nullGuardResult.getErrorValue());
+            }
+        }
+        
+        return Result.ok<GuardResponse>();
+    }
+
     public static againstEmptyString(argument: string, argumentName: string): Result<GuardResponse> {
         return argument.trim().length === 0
             ? Result.fail<GuardResponse>(`${argumentName} is an empty string.`)
-            : Result.ok<GuardResponse>();
-    }
-
-    public static againstNegativeNumber(argument: number, argumentName: string): Result<GuardResponse> {
-        return argument > 0
-            ? Result.fail<GuardResponse>(`${argumentName} is negative.`)
             : Result.ok<GuardResponse>();
     }
 }

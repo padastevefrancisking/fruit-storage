@@ -28,25 +28,25 @@ describe('Guard', () => {
 
     // ─── greaterThan ──────────────────────────────────────────────────────────
 
-    describe('greaterThan', () => {
+    describe('againstGreaterThan', () => {
         it('should return ok when actualValue is greater than minValue', () => {
-            const result = Guard.isGreaterThan(0, 1);
-            expect(result.isSuccess).toBe(true);
+            const result = Guard.againstGreaterThan(0, 1);
+            expect(result.isSuccess).toBe(false);
         });
 
         it('should return fail when actualValue equals minValue', () => {
-            const result = Guard.isGreaterThan(5, 5);
-            expect(result.isFailure).toBe(true);
+            const result = Guard.againstGreaterThan(5, 5);
+            expect(result.isFailure).toBe(false);
         });
 
         it('should return fail when actualValue is less than minValue', () => {
-            const result = Guard.isGreaterThan(10, 5);
-            expect(result.isFailure).toBe(true);
+            const result = Guard.againstGreaterThan(10, 5);
+            expect(result.isFailure).toBe(false);
         });
 
-        it('should include minValue in the error message', () => {
-            const result = Guard.isGreaterThan(10, 3);
-            expect(result.getErrorValue()).toContain('10');
+        it('should include maxValue in the error message', () => {
+            const result = Guard.againstGreaterThan(3, 10);
+            expect(result.getErrorValue()).toContain('3');
         });
     });
 

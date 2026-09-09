@@ -30,12 +30,12 @@ export class Result<T> {
         return this._value as T;
     }
 
-    public getErrorValue (): T{
+    public getErrorValue (): string{
         if (this.isSuccess) {
             throw new Error("Can't get error value of successful result.");
         }
 
-        return this.error as T;
+        return this.error as string
     }
 
     public static ok<U> (value?: U) : Result<U> {
