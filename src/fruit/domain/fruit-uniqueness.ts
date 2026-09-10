@@ -10,7 +10,7 @@ export class FruitUniquenessService{
     ) {}
 
     public async isUnique(name: FruitName): Promise<boolean> {
-        const alreadyExists = this.fruitRepository.exists(name.value);
+        const alreadyExists = await this.fruitRepository.exists(name.value);
         return !alreadyExists;
     }
 }

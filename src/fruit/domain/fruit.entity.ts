@@ -122,18 +122,18 @@ export class Fruit extends AggregateRoot<FruitProps> {
     }
 
     public remove(amount: number): Result<void> {
-        const argumentName = 'amount';
-        const newStockAmount = this.props.stock.value - amount;
-        const negativeGuardResult = Guard.againstNegativeNumber(newStockAmount, argumentName);
-        if (negativeGuardResult.isFailure)
-        {
+        if (amount <= 0) {
             return Result.fail<void>(`Amount to remove must be a positive integer.`);
         }
 
-        const newStock = FruitStock.create(amount);
-        if (newStock.isFailure)
-        {
-            return Result.fail<void>(newStock.getErrorValue())
+        const newStockAmount = this.props.stock.value - amount;
+        if (newStockAmount < 0) {
+            return Result.fail<void>(`Cannot remove ${amount} fruits. Only ${this.props.stock.value} left in storage.`);
+        }
+
+        const newStock = FruitStock.create(newStockAmount);
+        if (newStock.isFailure) {
+            return Result.fail<void>(newStock.getErrorValue());
         }
 
         this.props.stock = newStock.getValue();
@@ -143,10 +143,10 @@ export class Fruit extends AggregateRoot<FruitProps> {
         return Result.ok<void>();
     }
 
-    public delete(flag: boolean): Result<void> {
+    public delete(forceDelete: boolean): Result<void> {
         const currentStock = this.props.stock.value;
-        if (currentStock > 0) {
-            return Result.fail<void>(`Fruit still has ${currentStock} stocks left in storage.`)
+        if (currentStock > 0 && !forceDelete) {
+            return Result.fail<void>(`Fruit still has ${currentStock} stocks left in storage.`);
         }
 
         this.addDomainEvent(new FruitDeletedEvent(this));

@@ -30,7 +30,7 @@ export class Guard {
     }
 
     public static againstNegativeNumber(argument: number, argumentName: string): Result<GuardResponse> {
-        return argument > 0
+        return argument < 0
             ? Result.fail<GuardResponse>(`${argumentName} is negative.`)
             : Result.ok<GuardResponse>();
     }

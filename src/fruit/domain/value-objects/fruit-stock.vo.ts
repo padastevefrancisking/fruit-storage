@@ -23,9 +23,9 @@ export class FruitStock extends ValueObject<FruitStockProps> {
             return Result.fail<FruitStock>(nullGuardResult.getErrorValue())
         }
 
-        const positiveGuardResult = Guard.isPositiveNumber(amount, argumentName);
-        if (positiveGuardResult.isFailure) {
-            return Result.fail<FruitStock>(positiveGuardResult.getErrorValue());
+        const negativeGuardResult = Guard.againstNegativeNumber(amount, argumentName);
+        if (negativeGuardResult.isFailure) {
+            return Result.fail<FruitStock>(negativeGuardResult.getErrorValue());
         }
 
         return Result.ok<FruitStock>(new FruitStock({value: amount}));

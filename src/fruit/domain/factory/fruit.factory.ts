@@ -1,4 +1,4 @@
-import { Injectable, Res } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { FruitUniquenessService } from "../fruit-uniqueness";
 import { Result } from "../../../shared/core/result";
 import { Fruit } from "../fruit.entity";
@@ -34,9 +34,9 @@ export class FruitFactory{
         }
 
         const fruitName = nameResult.getValue()
-        const isNameUnique = this.fruitUniquenessService.isUnique(fruitName);
+        const isNameUnique = await this.fruitUniquenessService.isUnique(fruitName);
         if (!isNameUnique) {
-            return Result.fail<Fruit>(`A fruit with the name ${fruitName} already exists.`)
+            return Result.fail<Fruit>(`A fruit with the name "${fruitName.value}" already exists.`)
         }
 
         const fruitDescription = descriptionResult.getValue();
