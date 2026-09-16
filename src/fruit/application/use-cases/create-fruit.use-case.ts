@@ -5,7 +5,7 @@ import { FruitDTO } from "../dtos/fruit.dto";
 import { FRUIT_REPOSITORY } from "../../repos/fruit.repository";
 import { FruitFactory } from "../../domain/factory/fruit.factory";
 import { DomainError, FruitErrorCode } from "../../domain/fruit.errors";
-import { FruitMapper } from "../fruit.mapper";
+import { FruitMapper } from "../../mappers/fruit.mapper";
 import type { IFruitRepository } from "../../repos/fruit.repository";
 
 @Injectable()

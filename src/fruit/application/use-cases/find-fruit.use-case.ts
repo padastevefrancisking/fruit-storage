@@ -5,7 +5,7 @@ import { FindFruitDTO } from "../dtos/find-fruit.dto";
 import { FruitDTO } from "../dtos/fruit.dto";
 import type { IFruitRepository } from "../../repos/fruit.repository";
 import { DomainError, FruitErrorCode } from "../../domain/fruit.errors";
-import { FruitMapper } from "../fruit.mapper";
+import { FruitMapper } from "../../mappers/fruit.mapper";
 
 @Injectable()
 export class FindFruitUseCase implements UseCase<FindFruitDTO, FruitDTO> {
