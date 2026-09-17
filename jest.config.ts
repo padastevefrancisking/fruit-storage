@@ -21,6 +21,7 @@ const config: Config = {
     ...pathsToModuleNameMapper(paths, { prefix: '<rootDir>/' }),
     '^@nestjs/common$': '<rootDir>/__mocks__/@nestjs/common.ts',
     '^@nestjs/mongoose$': '<rootDir>/__mocks__/@nestjs/mongoose.ts',
+    '^@nestjs/schedule$': '<rootDir>/__mocks__/@nestjs/schedule.ts',
   },
   collectCoverageFrom: [
     'src/**/*.(t|j)s',
