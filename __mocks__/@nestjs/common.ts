@@ -22,3 +22,11 @@ export const HttpStatus = {
 export const Scope = { DEFAULT: 0, TRANSIENT: 1, REQUEST: 2 };
 export const Optional = () => () => {};
 export const SetMetadata = () => () => {};
+export class Logger {
+    constructor(public readonly context?: string) {}
+    log(...args: any[]) {}
+    error(...args: any[]) {}
+    warn(...args: any[]) {}
+    debug(...args: any[]) {}
+    verbose(...args: any[]) {}
+}

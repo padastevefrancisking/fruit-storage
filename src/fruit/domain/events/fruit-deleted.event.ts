@@ -1,4 +1,4 @@
-import { IDomainEvent } from "../../../shared/domain/event/i-domain-event";
+import { IDomainEvent } from "../../../shared/domain/event/domain-event";
 import { UniqueEntityID } from "../../../shared/domain/unique-entity-id";
 import { Fruit } from "../fruit.entity";
 
