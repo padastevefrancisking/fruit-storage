@@ -12,6 +12,8 @@ export interface IOutboxRecord {
     updatedAt?: Date;
 }
 
+export const OUTBOX_REPOSITORY = Symbol("OUTBOX_REPOSITORY");
+
 export interface IOutboxRepository {
     addEvents(events: IDomainEvent[], session?: ClientSession): Promise<void>;
     findUndelivered(limit: number): Promise<IOutboxRecord[]>;

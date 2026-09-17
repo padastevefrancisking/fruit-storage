@@ -1,6 +1,6 @@
 import { Fruit } from "../domain/fruit.entity";
 
-export const FRUIT_REPOSITORY: string = "FRUIT_REPOSITORY";
+export const FRUIT_REPOSITORY = Symbol("FRUIT_REPOSITORY");
 
 export interface IFruitRepository {
     exists(name: string): Promise<boolean>;
