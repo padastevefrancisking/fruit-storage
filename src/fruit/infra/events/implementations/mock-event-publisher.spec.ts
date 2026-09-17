@@ -1,11 +1,11 @@
-import { EventPublisher } from './event-publisher';
+import { MockEventPublisher } from './mock-event-publisher';
 import { Logger } from '@nestjs/common';
 
 describe('EventPublisher', () => {
-    let publisher: EventPublisher;
+    let publisher: MockEventPublisher;
 
     beforeEach(() => {
-        publisher = new EventPublisher();
+        publisher = new MockEventPublisher();
     });
 
     it('should log published domain event with eventName and stringified payload', async () => {
