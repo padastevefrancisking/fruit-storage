@@ -1,6 +1,9 @@
-import { Injectable, Logger } from "@nestjs/common";
+import { Inject, Injectable, Logger } from "@nestjs/common";
+import { OUTBOX_REPOSITORY } from "../database/outbox/repos/outbox.repository";
 import type { IOutboxRepository } from "../database/outbox/repos/outbox.repository";
-import { EventPublisher } from "./event-publisher";
+import { Cron, CronExpression } from "@nestjs/schedule";
+import { EVENT_PUBLISHER } from "./event-publisher";
+import type { IEventPublisher } from "./event-publisher";
 
 @Injectable()
 export class OutboxDispatcherCron {
@@ -8,10 +11,11 @@ export class OutboxDispatcherCron {
     private isRunning : boolean = false;
 
     constructor(
-        private readonly outboxRepository: IOutboxRepository,
-        private readonly eventPublisher: EventPublisher
+        @Inject(OUTBOX_REPOSITORY) private readonly outboxRepository: IOutboxRepository,
+        @Inject(EVENT_PUBLISHER) private readonly eventPublisher: IEventPublisher
     ) {}
 
+    @Cron(CronExpression.EVERY_5_MINUTES)
     public async dispatchPendingEvents(): Promise<void> {
         if (this.isRunning) return;
         this.isRunning = true;

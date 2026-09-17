@@ -1,12 +1,12 @@
 import { OutboxDispatcherCron } from './outbox-dispatcher.cron';
 import { IOutboxRepository, IOutboxRecord } from '../database/outbox/repos/outbox.repository';
-import { EventPublisher } from './event-publisher';
+import { MockEventPublisher } from './implementations/mock-event-publisher';
 import { Logger } from '@nestjs/common';
 
 describe('OutboxDispatcherCron', () => {
     let cron: OutboxDispatcherCron;
     let mockOutboxRepo: jest.Mocked<IOutboxRepository>;
-    let mockPublisher: jest.Mocked<EventPublisher>;
+    let mockPublisher: jest.Mocked<MockEventPublisher>;
 
     beforeEach(() => {
         mockOutboxRepo = {
@@ -18,7 +18,7 @@ describe('OutboxDispatcherCron', () => {
 
         mockPublisher = {
             publish: jest.fn(),
-        } as unknown as jest.Mocked<EventPublisher>;
+        } as unknown as jest.Mocked<MockEventPublisher>;
 
         cron = new OutboxDispatcherCron(mockOutboxRepo, mockPublisher);
     });
