@@ -94,10 +94,18 @@ export class Fruit extends AggregateRoot<FruitProps> {
         this.addDomainEvent(new FruitUpdatedEvent(this));
     }
 
-    public updateStorageLimit(limit: FruitStorageLimit): void {
+    public updateStorageLimit(limit: FruitStorageLimit): Result<void> {
+        const greaterThanGuardResult = Guard.againstGreaterThan(limit.value, this.props.stock.value);
+        if (greaterThanGuardResult.isFailure)
+        {
+            return Result.fail<void>(`New limit (${limit.value}) is smaller than current fruit stock (${this.props.stock.value}).`);    
+        }
+
         this.props.limitOfFruitToBeStored = limit;
         this.props.updatedAt = new Date();
         this.addDomainEvent(new FruitUpdatedEvent(this));
+
+        return Result.ok<void>();
     }
 
     public store(amount: number) : Result<void> {
