@@ -77,6 +77,16 @@ describe('Fruit Entity', () => {
         expect(fruit.domainEvents[0]).toBeInstanceOf(FruitUpdatedEvent);
     });
 
+    it ('should fail when updating storage limit value below stock', () => {
+        const fruit = Fruit.create(createValidProps()).getValue();
+        fruit.store(50);
+
+        const newStorageLimit = FruitStorageLimit.create(40).getValue();
+        const updateStorageLimtiResult = fruit.updateStorageLimit(newStorageLimit);
+
+        expect(updateStorageLimtiResult.isSuccess).toBe(false);
+    });
+    
     // ─── Store ────────────────────────────────────────────────────────────────
 
     it('should store fruit amount within limit and dispatch FruitUpdatedEvent', () => {
@@ -169,4 +179,6 @@ describe('Fruit Entity', () => {
         expect(fruit.domainEvents).toHaveLength(1);
         expect(fruit.domainEvents[0]).toBeInstanceOf(FruitDeletedEvent);
     });
+
+    
 });
