@@ -1,7 +1,7 @@
 import { MockEventPublisher } from './mock-event-publisher';
 import { Logger } from '@nestjs/common';
 
-describe('EventPublisher', () => {
+describe('MockEventPublisher', () => {
     let publisher: MockEventPublisher;
 
     beforeEach(() => {
