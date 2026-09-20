@@ -41,8 +41,14 @@ export class UpdateFruitUseCase implements UseCase<UpdateFruitDTO, FruitDTO> {
         }
 
         fruit.updateDescription(descriptionResult.getValue());
-        fruit.updateStorageLimit(storageLimitResult.getValue());
-
+        const updateStorageLimitResult = fruit.updateStorageLimit(storageLimitResult.getValue());
+        if(updateStorageLimitResult.isFailure) {
+            throw new DomainError(
+                FruitErrorCode.INVALID_LIMIT,
+                updateStorageLimitResult.getErrorValue()
+            )
+        }
+        
         await this.fruitRepository.save(fruit);
 
         return FruitMapper.toDTO(fruit);
