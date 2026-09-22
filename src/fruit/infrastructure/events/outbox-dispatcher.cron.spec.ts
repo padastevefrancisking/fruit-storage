@@ -1,5 +1,5 @@
 import { OutboxDispatcherCron } from './outbox-dispatcher.cron';
-import { IOutboxRepository, IOutboxRecord } from '../database/outbox/repos/outbox.repository';
+import { IOutboxRepository, IOutboxRecord } from '../../application/repos/outbox.repository';
 import { MockEventPublisher } from './implementations/mock-event-publisher';
 import { Logger } from '@nestjs/common';
 

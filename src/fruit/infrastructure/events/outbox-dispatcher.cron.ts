@@ -1,6 +1,6 @@
 import { Inject, Injectable, Logger } from "@nestjs/common";
-import { OUTBOX_REPOSITORY } from "../database/outbox/repos/outbox.repository";
-import type { IOutboxRepository } from "../database/outbox/repos/outbox.repository";
+import { OUTBOX_REPOSITORY } from "../../application/repos/outbox.repository";
+import type { IOutboxRepository } from "../../application/repos/outbox.repository";
 import { Cron, CronExpression } from "@nestjs/schedule";
 import { EVENT_PUBLISHER } from "./event-publisher";
 import type { IEventPublisher } from "./event-publisher";
