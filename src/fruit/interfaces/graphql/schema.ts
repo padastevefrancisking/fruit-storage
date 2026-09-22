@@ -8,5 +8,5 @@ export const fruitSchema = makeSchema({
         schema: join(process.cwd(), 'generated', 'schema.graphql'),
         typegen: join(process.cwd(), 'generated', 'nexus-typegenAutoConfig.ts')
     },
-    shouldGenerateArtifacts: process.env.NODE_ENV !== 'production'
+    shouldGenerateArtifacts: process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test'
 })
