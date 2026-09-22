@@ -1,5 +1,5 @@
 import { ListFruitsUseCase } from './list-fruits.use-case';
-import { IFruitRepository } from '../../repos/fruit.repository';
+import { IFruitRepository } from '../repos/fruit.repository';
 import { Fruit } from '../../domain/fruit.entity';
 import { FruitName } from '../../domain/value-objects/fruit-name.vo';
 import { FruitDescription } from '../../domain/value-objects/fruit-description.vo';

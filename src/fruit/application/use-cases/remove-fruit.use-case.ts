@@ -2,8 +2,8 @@ import { Inject, Injectable } from "@nestjs/common";
 import { UseCase } from "../../../shared/application/use-case";
 import { RemoveFruitDTO } from "../dtos/remove-fruit.dto";
 import { FruitDTO } from "../dtos/fruit.dto";
-import { FRUIT_REPOSITORY } from "../../repos/fruit.repository";
-import type { IFruitRepository } from "../../repos/fruit.repository";
+import { FRUIT_REPOSITORY } from "../repos/fruit.repository";
+import type { IFruitRepository } from "../repos/fruit.repository";
 import { FruitMapper } from "../../mappers/fruit.mapper";
 import { DomainError, FruitErrorCode } from "../../domain/fruit.errors";
 

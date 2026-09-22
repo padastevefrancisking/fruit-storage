@@ -1,6 +1,6 @@
 import { FruitUniquenessService } from './fruit-uniqueness';
 import { FruitName } from './value-objects/fruit-name.vo';
-import { IFruitRepository } from '../repos/fruit.repository';
+import { IFruitRepository } from '../application/repos/fruit.repository';
 
 describe('FruitUniquenessService', () => {
     let service: FruitUniquenessService;
