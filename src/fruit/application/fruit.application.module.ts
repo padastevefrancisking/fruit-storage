@@ -6,7 +6,7 @@ import { ListFruitsUseCase } from "./use-cases/list-fruits.use-case";
 import { RemoveFruitUseCase } from "./use-cases/remove-fruit.use-case";
 import { StoreFruitUseCase } from "./use-cases/store-fruit.use-case";
 import { UpdateFruitUseCase } from "./use-cases/update-fruit.use-case";
-import { FruitInfrastructureModule } from "../infra/fruit.infrastructure.module";
+import { FruitInfrastructureModule } from "../infrastructure/fruit.infrastructure.module";
 import { FruitUniquenessService } from "../domain/fruit-uniqueness";
 import { FruitFactory } from "../domain/factory/fruit.factory";
 
