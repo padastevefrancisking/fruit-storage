@@ -1,4 +1,4 @@
-import { Fruit } from "../domain/fruit.entity";
+import { Fruit } from "../../domain/fruit.entity";
 
 export const FRUIT_REPOSITORY = Symbol("FRUIT_REPOSITORY");
 

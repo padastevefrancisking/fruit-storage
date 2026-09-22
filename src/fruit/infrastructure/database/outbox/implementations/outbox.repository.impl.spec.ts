@@ -1,8 +1,8 @@
 import { OutboxRepository } from './outbox.repository.impl';
 import { Model, ClientSession } from 'mongoose';
-import { OutboxEventDocument } from '../../outbox.schema';
-import { IDomainEvent } from '../../../../../../shared/domain/event/domain-event';
-import { UniqueEntityID } from '../../../../../../shared/domain/unique-entity-id';
+import { OutboxEventDocument } from '../outbox.schema';
+import { IDomainEvent } from '../../../../../shared/domain/event/domain-event';
+import { UniqueEntityID } from '../../../../../shared/domain/unique-entity-id';
 
 describe('OutboxRepository', () => {
     let repository: OutboxRepository;

@@ -1,9 +1,9 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { UseCase } from "../../../shared/application/use-case";
-import { FRUIT_REPOSITORY } from "../../repos/fruit.repository";
+import { FRUIT_REPOSITORY } from "../repos/fruit.repository";
 import { FindFruitDTO } from "../dtos/find-fruit.dto";
 import { FruitDTO } from "../dtos/fruit.dto";
-import type { IFruitRepository } from "../../repos/fruit.repository";
+import type { IFruitRepository } from "../repos/fruit.repository";
 import { DomainError, FruitErrorCode } from "../../domain/fruit.errors";
 import { FruitMapper } from "../../mappers/fruit.mapper";
 

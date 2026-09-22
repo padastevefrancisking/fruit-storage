@@ -1,9 +1,9 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { UseCase } from "../../../shared/application/use-case";
 import { DeleteFruitDTO } from "../dtos/delete-fruit.dto";
-import { FRUIT_REPOSITORY } from "../../repos/fruit.repository";
+import { FRUIT_REPOSITORY } from "../repos/fruit.repository";
 import { DomainError, FruitErrorCode } from "../../domain/fruit.errors";
-import type { IFruitRepository } from "../../repos/fruit.repository";
+import type { IFruitRepository } from "../repos/fruit.repository";
 
 @Injectable()
 export class DeleteFruitUseCase implements UseCase<DeleteFruitDTO, void> {

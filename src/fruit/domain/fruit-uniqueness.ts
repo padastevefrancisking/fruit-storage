@@ -1,7 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import { FruitName } from "./value-objects/fruit-name.vo";
-import { FRUIT_REPOSITORY } from "../repos/fruit.repository";
-import type { IFruitRepository } from "../repos/fruit.repository";
+import { FRUIT_REPOSITORY } from "../application/repos/fruit.repository";
+import type { IFruitRepository } from "../application/repos/fruit.repository";
 
 @Injectable()
 export class FruitUniquenessService{

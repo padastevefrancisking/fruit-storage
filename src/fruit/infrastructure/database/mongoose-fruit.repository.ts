@@ -1,12 +1,12 @@
 import { Inject, Injectable } from "@nestjs/common";
-import { IFruitRepository } from "../../../../../repos/fruit.repository";
-import { Fruit } from "../../../../../domain/fruit.entity";
+import { IFruitRepository } from "../../application/repos/fruit.repository";
+import { Fruit } from "../../domain/fruit.entity";
 import { InjectConnection, InjectModel } from "@nestjs/mongoose";
 import { Connection, Model } from "mongoose";
-import { FruitDocument } from "../../../fruit.schema";
-import { OUTBOX_REPOSITORY } from "../outbox.repository";
-import type { IOutboxRepository } from "../outbox.repository";
-import { FruitMapper, FruitPersistence } from "../../../../../mappers/fruit.mapper";
+import { FruitDocument } from "./fruit.schema";
+import { OUTBOX_REPOSITORY } from "../../application/repos/outbox.repository";
+import type { IOutboxRepository } from "../../application/repos/outbox.repository";
+import { FruitMapper, FruitPersistence } from "../../mappers/fruit.mapper";
 
 @Injectable()
 export class MongooseFruitRepository implements IFruitRepository {

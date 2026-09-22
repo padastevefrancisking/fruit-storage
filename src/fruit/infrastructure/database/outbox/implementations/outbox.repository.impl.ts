@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
-import { IOutboxRepository } from "../outbox.repository";
-import type { IOutboxRecord } from "../outbox.repository";
+import { IOutboxRepository } from "../../../../application/repos/outbox.repository";
+import type { IOutboxRecord } from "../../../../application/repos/outbox.repository";
 import { InjectModel } from "@nestjs/mongoose";
-import { OutboxEventDocument } from "../../outbox.schema";
+import { OutboxEventDocument } from "../outbox.schema";
 import { ClientSession, Model } from "mongoose";
-import { IDomainEvent } from "../../../../../../shared/domain/event/domain-event";
+import { IDomainEvent } from "../../../../../shared/domain/event/domain-event";
 
 
 @Injectable()

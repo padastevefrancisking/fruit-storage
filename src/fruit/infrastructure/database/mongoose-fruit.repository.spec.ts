@@ -1,12 +1,12 @@
 import { MongooseFruitRepository } from './mongoose-fruit.repository';
 import { Model, Connection, ClientSession } from 'mongoose';
-import { FruitDocument } from '../../../fruit.schema';
-import { IOutboxRepository } from '../outbox.repository';
-import { Fruit } from '../../../../../domain/fruit.entity';
-import { FruitName } from '../../../../../domain/value-objects/fruit-name.vo';
-import { FruitDescription } from '../../../../../domain/value-objects/fruit-description.vo';
-import { FruitStorageLimit } from '../../../../../domain/value-objects/fruit-storage-limit.vo';
-import { UniqueEntityID } from '../../../../../../shared/domain/unique-entity-id';
+import { FruitDocument } from './fruit.schema';
+import { IOutboxRepository } from '../../application/repos/outbox.repository';
+import { Fruit } from '../../domain/fruit.entity';
+import { FruitName } from '../../domain/value-objects/fruit-name.vo';
+import { FruitDescription } from '../../domain/value-objects/fruit-description.vo';
+import { FruitStorageLimit } from '../../domain/value-objects/fruit-storage-limit.vo';
+import { UniqueEntityID } from '../../../shared/domain/unique-entity-id';
 
 describe('MongooseFruitRepository', () => {
     let repository: MongooseFruitRepository;

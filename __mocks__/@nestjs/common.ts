@@ -10,6 +10,23 @@ export const Query = () => () => {};
 export const Headers = () => () => {};
 export const Header = () => () => {};
 export const HttpCode = () => () => {};
+export const Get = (path?: any) => (target: any, key?: any, descriptor?: any) => descriptor;
+export const Post = (path?: any) => (target: any, key?: any, descriptor?: any) => descriptor;
+export const Put = (path?: any) => (target: any, key?: any, descriptor?: any) => descriptor;
+export const Delete = (path?: any) => (target: any, key?: any, descriptor?: any) => descriptor;
+export const Patch = (path?: any) => (target: any, key?: any, descriptor?: any) => descriptor;
+export const Catch = (...exceptions: any[]) => (target: any) => target;
+export class HttpException extends Error {
+    constructor(public readonly response: any, public readonly status: number) {
+        super(typeof response === 'string' ? response : (response?.message ?? 'Http Exception'));
+    }
+    getStatus(): number {
+        return this.status;
+    }
+    getResponse(): any {
+        return this.response;
+    }
+}
 export const HttpStatus = {
     OK: 200,
     CREATED: 201,
@@ -17,6 +34,7 @@ export const HttpStatus = {
     UNAUTHORIZED: 401,
     FORBIDDEN: 403,
     NOT_FOUND: 404,
+    CONFLICT: 409,
     INTERNAL_SERVER_ERROR: 500,
 };
 export const Scope = { DEFAULT: 0, TRANSIENT: 1, REQUEST: 2 };

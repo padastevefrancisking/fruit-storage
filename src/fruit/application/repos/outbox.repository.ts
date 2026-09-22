@@ -1,5 +1,5 @@
 import { ClientSession } from "mongoose";
-import { IDomainEvent } from "../../../../../shared/domain/event/domain-event";
+import { IDomainEvent } from "../../../shared/domain/event/domain-event";
 
 export interface IOutboxRecord {
     _id: string;
