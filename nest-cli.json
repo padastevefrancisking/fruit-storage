@@ -4,5 +4,11 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true
-  }
+  },
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "generated",
+    "**/*spec.ts"
+  ]
 }
